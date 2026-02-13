@@ -1,0 +1,300 @@
+{
+  "1462831246743961725": {
+    "rng": {
+      "tokenPrices": {
+        "common": 50,
+        "uncommon": 120,
+        "rare": 300,
+        "epic": 800,
+        "legendary": 2000
+      },
+      "roleWeights": {
+        "common": {},
+        "uncommon": {},
+        "rare": {},
+        "epic": {},
+        "legendary": {}
+      }
+    },
+    "eco": {
+      "msgRewardCooldownSec": 20,
+      "msgCoinsMin": 1,
+      "msgCoinsMax": 3,
+      "msgXpMin": 5,
+      "msgXpMax": 10,
+      "reactRewardCooldownSec": 10,
+      "reactCoins": 1,
+      "reactXp": 2,
+      "vcCoinsPerMin": 1,
+      "vcXpPerMin": 2,
+      "baseXp": 100,
+      "pickpocketCaughtChance": 0.35,
+      "pickpocketCaughtLimit": 5,
+      "pickpocketPunishRoleId": ""
+    },
+    "roles": {
+      "joinRoleId": "",
+      "roleRules": {}
+    },
+    "custom": {
+      "commands": {
+        "beg": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 1,
+          "coinsMax": 6,
+          "cooldownSec": 60
+        },
+        "pickpocket": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 10,
+          "cooldownSec": 90
+        },
+        "slap": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 20
+        },
+        "punch": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 25
+        },
+        "duel": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 15,
+          "cooldownSec": 120
+        },
+        "praise": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 15
+        },
+        "insult": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 15
+        }
+      }
+    },
+    "birthdays": {
+      "users": {},
+      "messageTemplate": "🎂 Happy birthday {user}! Everyone wish them a great day!",
+      "channelId": "1465012968675872779",
+      "pingRoleId": "",
+      "lastAnnouncedDate": "2026-01-25"
+    },
+    "users": {}
+  },
+  "1458513887228858596": {
+    "rng": {
+      "tokenPrices": {
+        "common": 50,
+        "uncommon": 120,
+        "rare": 300,
+        "epic": 800,
+        "legendary": 2000
+      },
+      "roleWeights": {
+        "common": {},
+        "uncommon": {},
+        "rare": {},
+        "epic": {},
+        "legendary": {}
+      }
+    },
+    "eco": {
+      "msgRewardCooldownSec": 20,
+      "msgCoinsMin": 1,
+      "msgCoinsMax": 3,
+      "msgXpMin": 5,
+      "msgXpMax": 10,
+      "reactRewardCooldownSec": 10,
+      "reactCoins": 1,
+      "reactXp": 2,
+      "vcCoinsPerMin": 1,
+      "vcXpPerMin": 2,
+      "baseXp": 100,
+      "pickpocketCaughtChance": 0.35,
+      "pickpocketCaughtLimit": 5,
+      "pickpocketPunishRoleId": ""
+    },
+    "roles": {
+      "joinRoleId": "",
+      "roleRules": {}
+    },
+    "custom": {
+      "commands": {
+        "beg": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 1,
+          "coinsMax": 6,
+          "cooldownSec": 60
+        },
+        "pickpocket": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 10,
+          "cooldownSec": 90
+        },
+        "slap": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 20
+        },
+        "punch": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 25
+        },
+        "duel": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 15,
+          "cooldownSec": 120
+        },
+        "praise": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 15
+        },
+        "insult": {
+          "enabled": true,
+          "allowedRoleIds": [],
+          "coinsMin": 0,
+          "coinsMax": 0,
+          "cooldownSec": 15
+        }
+      }
+    },
+    "birthdays": {
+      "users": {},
+      "messageTemplate": "🎂 Happy birthday {user}! Everyone wish them a great day!",
+      "channelId": "1465012968675872779",
+      "pingRoleId": "",
+      "lastAnnouncedDate": "2026-01-26"
+    },
+    "users": {
+      "900758140499398676": {
+        "coins": 25,
+        "xp": 70,
+        "level": 0,
+        "tokens": {
+          "common": 0,
+          "uncommon": 0,
+          "rare": 0,
+          "epic": 0,
+          "legendary": 0
+        },
+        "joinBonusGiven": false,
+        "lastMsgReward": 1769380904055,
+        "lastReactReward": 0,
+        "vcJoinAt": null,
+        "customCooldowns": {
+          "slap": 1769375957712,
+          "praise": 1769371603202,
+          "beg": 1769375347940
+        },
+        "pickpocketCaught": 0
+      },
+      "1445392391140937863": {
+        "coins": 33,
+        "xp": 126,
+        "level": 1,
+        "tokens": {
+          "common": 0,
+          "uncommon": 0,
+          "rare": 0,
+          "epic": 0,
+          "legendary": 0
+        },
+        "joinBonusGiven": false,
+        "lastMsgReward": 1769382152572,
+        "lastReactReward": 0,
+        "vcJoinAt": null,
+        "customCooldowns": {
+          "slap": 1769375974643,
+          "pickpocket": 1769376045490,
+          "punch": 1769376276266,
+          "praise": 1769376316651
+        },
+        "pickpocketCaught": 0
+      },
+      "1431365059153625340": {
+        "coins": 42,
+        "xp": 124,
+        "level": 1,
+        "tokens": {
+          "common": 0,
+          "uncommon": 0,
+          "rare": 0,
+          "epic": 0,
+          "legendary": 0
+        },
+        "joinBonusGiven": false,
+        "lastMsgReward": 1769381132170,
+        "lastReactReward": 0,
+        "vcJoinAt": null,
+        "customCooldowns": {
+          "punch": 1769376452079,
+          "insult": 1769372224972,
+          "praise": 1769381337484,
+          "slap": 1769375979950,
+          "pickpocket": 1769376082384
+        },
+        "pickpocketCaught": 0
+      },
+      "691015283275464764": {
+        "coins": 3,
+        "xp": 6,
+        "level": 0,
+        "tokens": {
+          "common": 0,
+          "uncommon": 0,
+          "rare": 0,
+          "epic": 0,
+          "legendary": 0
+        },
+        "joinBonusGiven": false,
+        "lastMsgReward": 1769372219926,
+        "lastReactReward": 0,
+        "vcJoinAt": null,
+        "customCooldowns": {},
+        "pickpocketCaught": 0
+      },
+      "1317322270481580062": {
+        "coins": 8,
+        "xp": 36,
+        "level": 0,
+        "lastMsgReward": 1769376655466,
+        "lastReactReward": 0,
+        "vcJoinAt": null,
+        "customCooldowns": {
+          "punch": 1769376547941
+        },
+        "pickpocketCaught": 0
+      }
+    }
+  }
+}
