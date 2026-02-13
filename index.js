@@ -35,7 +35,8 @@ const {
   Events,
   REST,
   Routes,
-  SlashCommandBuilder
+  SlashCommandBuilder,
+  EmbedBuilder
 } = require("discord.js");
 
 const fs = require("fs");
@@ -60,7 +61,8 @@ const ADMIN_PREFIX_COMMANDS = new Set([
   "rolepanel",
   "economypanel",
   "setbirthdaymsg",
-  "setbirthdaychannel"
+  "setbirthdaychannel",
+  "admin-commands"
 ]);
 /* ========================================= */
 
@@ -527,6 +529,7 @@ function buildSlashCommands() {
   const cmds = [];
 
   cmds.push(new SlashCommandBuilder().setName("commands").setDescription("Show all commands"));
+  cmds.push(new SlashCommandBuilder().setName("admin-commands").setDescription("ADMIN: Show admin commands"));
 
   cmds.push(new SlashCommandBuilder().setName("balance").setDescription("Show your balance"));
 
@@ -1002,44 +1005,31 @@ client.on("interactionCreate", async (interaction) => {
       const cmd = interaction.commandName;
 
       if (cmd === "commands") {
-        const text =
-`📜 **Commands**
-**Admin (message disappears only for prefix, not slash)**
-- /setcooldown, /clearcooldown, /ignorecooldown, /unignorecooldown, /rolepanel, /economypanel
-- /setbirthdaymsg, /setbirthdaychannel
+        const embed = new EmbedBuilder()
+          .setColor(0x5865F2)
+          .setTitle("📜 User Commands")
+          .addFields(
+            { name: "💰 Economy", value: "`!balance` or `/balance` - View your coins and XP", inline: false },
+            { name: "🎂 Birthdays", value: "`!birthday` or `/birthday` - Manage your birthday", inline: false },
+            { name: "🎮 Mafia Game", value: "`!mafia start` or `/mafia start` - Start lobby\n`!mafia stop` or `/mafia stop` - Stop game", inline: false },
+            { name: "🎭 Fun Commands", value: "`!beg` or `/fun beg`\n`!pickpocket @user` or `/fun pickpocket`\n`!slap`, `!punch`, `!duel`, `!praise`, `!insult`", inline: false }
+          )
+          .setFooter({ text: "Use !admin-commands or /admin-commands for admin help" });
+        return interaction.reply({ embeds: [embed], ephemeral: true });
+      }
 
-**Cooldowns**
-- !setcooldown /setcooldown
-- !clearcooldown /clearcooldown
-- !ignorecooldown /ignorecooldown
-- !unignorecooldown /unignorecooldown
-- !ignoredchannels /ignoredchannels
-
-**Economy**
-- !balance /balance
-
-**Panels**
-- !rolepanel /rolepanel (Admin)
-- !economypanel /economypanel (Admin)
-
-**Birthdays**
-- !birthday /birthday
-- !setbirthdaymsg /setbirthdaymsg (Admin)
-- !setbirthdaychannel /setbirthdaychannel (Admin)
-
-**Mafia**
-- !mafia start /mafia start
-- !mafia stop /mafia stop
-
-**Fun**
-- !beg /fun beg
-- !pickpocket @user /fun pickpocket
-- !slap @user /fun slap
-- !punch @user /fun punch
-- !duel @user /fun duel
-- !praise @user /fun praise
-- !insult @user /fun insult`;
-        return iNotice(interaction, text);
+      if (cmd === "admin-commands") {
+        if (!isAdminMember(interaction.memberPermissions)) return iNotice(interaction, "❌ This command is for administrators only.");
+        const embed = new EmbedBuilder()
+          .setColor(0xED4245)
+          .setTitle("🔐 Admin Commands")
+          .addFields(
+            { name: "⏱️ Cooldown Management", value: "`!setcooldown <@role> <seconds> [#channel]`\n`!clearcooldown <@role>`\n`!ignorecooldown <#channel>`\n`!unignorecooldown <#channel>`\n`!ignoredchannels`", inline: false },
+            { name: "⚙️ Configuration Panels", value: "`/economypanel` - Economy settings\n`/rolepanel` - Role management", inline: false },
+            { name: "🎂 Birthday Settings", value: "`/setbirthdaymsg <text>`\n`/setbirthdaychannel <#channel>`", inline: false }
+          )
+          .setFooter({ text: "Slash commands available: /setcooldown, /economypanel, /rolepanel, etc." });
+        return interaction.reply({ embeds: [embed], ephemeral: true });
       }
 
       if (cmd === "balance") {
@@ -1634,6 +1624,7 @@ function getPrefixCommandList(guildId) {
   ensureGuild(guildId);
   const base = new Set([
     "commands",
+    "admin-commands",
 
     "setcooldown",
     "clearcooldown",
@@ -1701,41 +1692,32 @@ client.on("messageCreate", async (message) => {
 
     // !commands
     if (cmd === "commands") {
-      const text =
-`📜 **Commands**
-**Admin**
-- !setcooldown, !clearcooldown, !ignorecooldown, !unignorecooldown
-- !economypanel
-- !setbirthdaymsg, !setbirthdaychannel
+      const embed = new EmbedBuilder()
+        .setColor(0x5865F2)
+        .setTitle("📜 User Commands")
+        .addFields(
+          { name: "💰 Economy", value: "`!balance` - View your coins and XP", inline: false },
+          { name: "🎂 Birthdays", value: "`!birthday set DD/MM/YYYY` - Set birthday\n`!birthday view` - View birthday\n`!birthday clear` - Clear birthday", inline: false },
+          { name: "🎮 Mafia Game", value: "`!mafia start` - Start lobby\n`!mafia stop` - Stop game", inline: false },
+          { name: "🎭 Fun Commands", value: "`!beg` - Beg for coins\n`!pickpocket @user` - Pickpocket someone\n`!slap @user` - Slap someone\n`!punch @user` - Punch someone\n`!duel @user` - Challenge to duel\n`!praise @user` - Praise someone\n`!insult @user` - Insult someone", inline: false }
+        )
+        .setFooter({ text: "Use !admin-commands to see admin-only commands" });
+      return message.channel.send({ embeds: [embed] });
+    }
 
-**Cooldowns**
-- !setcooldown <roleId|@role> <seconds> [#channel]
-- !clearcooldown <roleId|@role>
-- !ignorecooldown <#channel|id>
-- !unignorecooldown <#channel|id>
-- !ignoredchannels
-
-**Economy**
-- !balance
-
-**Birthdays**
-- !birthday set DD/MM/YYYY (year optional)
-- !birthday view
-- !birthday clear
-
-**Mafia**
-- !mafia start
-- !mafia stop
-
-**Fun**
-- !beg
-- !pickpocket @user
-- !slap @user
-- !punch @user
-- !duel @user
-- !praise @user
-- !insult @user`;
-      return userNotice(message, text);
+    // !admin-commands
+    if (cmd === "admin-commands") {
+      if (!isAdmin) return userNotice(message, "❌ This command is for administrators only.");
+      const embed = new EmbedBuilder()
+        .setColor(0xED4245)
+        .setTitle("🔐 Admin Commands")
+        .addFields(
+          { name: "⏱️ Cooldown Management", value: "`!setcooldown <@role> <seconds> [#channel]`\n`!clearcooldown <@role>`\n`!ignorecooldown <#channel>`\n`!unignorecooldown <#channel>`\n`!ignoredchannels`", inline: false },
+          { name: "⚙️ Configuration Panels", value: "`!economypanel` - Economy settings\n`!rolepanel` - Role management", inline: false },
+          { name: "🎂 Birthday Settings", value: "`!setbirthdaymsg <text>` - Set birthday message\n`!setbirthdaychannel <#channel>` - Set announcement channel", inline: false }
+        )
+        .setFooter({ text: "Admin commands require Administrator permission" });
+      return message.channel.send({ embeds: [embed] });
     }
 
     // Admin cooldowns
